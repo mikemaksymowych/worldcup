@@ -1,0 +1,35 @@
+doctype html
+
+html
+	head
+		link(href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", rel="stylesheet")
+		link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css", rel="stylesheet")
+		style body { padding-top: 80px; }
+
+		title Super World Cup
+
+	body
+		div(class = "container")
+			div(class = "col-sm-6 col-sm-offset-3")
+				h1
+					span(class = "fa fa-sign-in")
+					| Login
+
+				if message.length > 0
+					div(class = "alert alert-danger")
+						| #{message}
+
+				form(action = "/login", method = "post")
+					div(class = "form-group")
+						label User
+						input(type = "text", class = "form-control", name = "user")
+					div(class = "form-group")
+						label Password
+						input(type = "password", class = "form-control", name = "password")
+
+					button(type = "submit", class = "btn btn-warning btn-lg") Login
+
+				hr
+
+
+

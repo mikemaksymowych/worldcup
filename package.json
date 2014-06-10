@@ -1,0 +1,17 @@
+{
+	"name": "twitter",
+	"main": "server.js",
+	"dependencies": {
+		"express": "latest",
+		"cookie-parser": "latest",
+		"body-parser": "latest",
+		"express-session": "latest",
+		"jade": "latest",
+		"passport": "latest",
+		"passport-local": "latest",
+		"connect-flash": "latest",
+		"mongoose": "latest",
+		"bcrypt-nodejs": "latest"
+	}
+}
+

@@ -1,0 +1,28 @@
+doctype html
+
+html
+	head
+		link(href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", rel="stylesheet")
+		link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css", rel="stylesheet")
+		style body { padding-top: 80px; }
+
+		title Super World Cup
+
+	body
+		div(class = "container")
+			div(class = "jumbotron text-center")
+				h1
+					span(class = "fa fa-lock")
+					| &nbsp; Super World Cup &nbsp;
+					span(class = "fa fa-lock")
+
+				a(href = "/login", class = "btn btn-default")
+					span(class = "fa fa-user")
+						| &nbsp; Login
+
+				| &nbsp;
+
+				a(href = "/signup", class = "btn btn-default")
+					span(class = "fa fa-user")
+						| &nbsp; Register
+
