@@ -16,6 +16,8 @@ require('./config/passport.js')(passport);
 
 var app = express();
 
+app.use('/static', express.static(__dirname + '/static'));
+
 //app.use(express.logger('dev'));
 app.use(cookieParser());
 app.use(bodyParser());

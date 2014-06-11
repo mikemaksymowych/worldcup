@@ -13,25 +13,47 @@ html
 			div(class = "page-header text-center")
 				h1
 					span(class = "fa fa-anchor")
-					| Profile
+					| &nbsp; User Page
 
 				a(href = "/logout" class = "btn btn-default btn-sm") Logout
+
 
 			div(class = "row")
 				div(class = "col-sm-6")
 					div(class = "well")
 						h3(class = "text-info")
 							span(class = "fa fa-user")
-							| &nbps; Local
+							| &nbsp; #{user.user}
 
 						p
-							strong id
-							| : #{user._id}
+							hr
+							strong email
+							| : #{user.email}
+							hr
+							strong points
+							| : #{user.points}
+							hr
+							a(href = "/profile/update" class = "btn btn-default btn-sm") Update
+
+				div(class = "col-sm-6")
+					div(class = "well")
+						h3(class = "text-info")
+							span(class = "fa fa-user")
+							| &nbsp; Wagers
+
+						p
+							hr
+							strong Match 1
 							br
-							strong user
-							| : #{user.local.user}
+							| Info
+							hr
+							strong Match 2
 							br
-							strong password
-							| : #{user.local.password}
+							| Info
+							hr
+							a(href = "/matches" class = "btn btn-default btn-sm") Update
+
+			hr
+
 
 

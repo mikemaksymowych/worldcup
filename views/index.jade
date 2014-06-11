@@ -1,28 +1,24 @@
-doctype html
+extends layout1
 
-html
-	head
-		link(href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", rel="stylesheet")
-		link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css", rel="stylesheet")
-		style body { padding-top: 80px; }
+block content
+	p(class = "centerImg")
+		img(src = "/static/tiger.png")
 
-		title Super World Cup
+	div(class = "jumbotron text-center")
+		h1
+			span(class = "fa fa-lock")
+			| &nbsp; Super World Cup &nbsp;
+			span(class = "fa fa-lock")
 
-	body
-		div(class = "container")
-			div(class = "jumbotron text-center")
-				h1
-					span(class = "fa fa-lock")
-					| &nbsp; Super World Cup &nbsp;
-					span(class = "fa fa-lock")
+		a(href = "/login", class = "btn btn-default")
+			span(class = "fa fa-user")
+				| &nbsp; Login
 
-				a(href = "/login", class = "btn btn-default")
-					span(class = "fa fa-user")
-						| &nbsp; Login
+		| &nbsp;
 
-				| &nbsp;
+		a(href = "/signup", class = "btn btn-default")
+			span(class = "fa fa-user")
+				| &nbsp; Register
 
-				a(href = "/signup", class = "btn btn-default")
-					span(class = "fa fa-user")
-						| &nbsp; Register
+
 

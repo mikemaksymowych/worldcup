@@ -1,3 +1,5 @@
+var Match = require('./models/match.js');
+
 module.exports = function(app, passport) {
 	app.get('/', function(req, res) {
 		res.render('index.jade');
@@ -32,8 +34,11 @@ module.exports = function(app, passport) {
 		res.redirect('/');
 	});
 
-	//app.get('/auth/twitter', passport.authenticate('twitter'));
-	//app.get('/auth/twitter/callback', passport.authenticate('twitter', { successRedirect: '/profile', failureRedirect: '/' }));
+	app.get('/matches', function(req, res) {
+		Match.find({}, function(err, docs) {
+			res.render('matches.jade', {user: req.user, matches: docs });
+		});
+	});
 };
 
 
