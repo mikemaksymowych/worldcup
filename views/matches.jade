@@ -1,36 +1,45 @@
-doctype html
+extends layout1
 
-html
-	head
-		link(href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", rel="stylesheet")
-		link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css", rel="stylesheet")
-		style body { padding-top: 80px; word-wrap: break-word }
+block content
+	div(class = "page-header text-center")
+		h1
+			span(class = "fa fa-anchor")
+			| &nbsp; Matches
+		br
+		| You have #{user.points} points
+		hr
 
-		title Super World Cup
-
-	body
-		div(class = "container")
-			div(class = "page-header text-center")
-				h1
-					span(class = "fa fa-anchor")
-					| &nbsp; Matches
+		each m, i in matches
+			form(action = "/wager", method = "post")
+				| #{m.datetime}
 				br
-				| You have #{user.points} points
+				br
+				input(type = "text", name = "team_1", size = "8", placeholder = "Wager")
+				| &nbsp;
+				img(src = "/static/flags/#{m.team_1_img}")
+				| &nbsp; #{m.team_1} (#{m.team_1_odds})
+				| &nbsp; vs.
+				| &nbsp; #{m.team_2} (#{m.team_2_odds})
+				| &nbsp;
+				img(src = "/static/flags/#{m.team_2_img}")
+				| &nbsp;
+				input(type = "text", name = "team_2", size = "8", placeholder = "Wager")
+				| &nbsp;
+				br
+				br
+				input(type = "text", name = "draw", size = "8", placeholder = "Wager")
+				| &nbsp;
+				| Draw (#{m.draw_odds})
+				br
+				br
+				input(type = "text", name = "match", value = "#{m._id}", hidden = "true")
+				button(type = "submit", class = "btn btn-warning btn-sm") Submit
 				hr
 
-				each m, i in matches
-					img(src = "/static/flags/#{m.team_1_img}")
-					| &nbsp; #{m.team_1} (#{m.team_1_odds})
-					| &nbsp; vs. &nbsp;
-					img(src = "/static/flags/#{m.team_2_img}")
-					| &nbsp; #{m.team_2} (#{m.team_2_odds})
-					br
-					br
-					| Draw (#{m.draw_odds})
-					br
-					br
-					| #{m.datetime}
 
-				hr
-				a(href = "/profile") Back to Profile
+		br
+		br
+		a(href = "/profile") Back to Profile
+
+
 

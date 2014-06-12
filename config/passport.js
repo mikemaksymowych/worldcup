@@ -37,7 +37,6 @@ module.exports = function(passport) {
 							throw err;
 						}
 
-						console.log(newUser);
 						return done(null, newUser);
 					});
 				}

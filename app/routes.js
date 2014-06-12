@@ -1,4 +1,6 @@
 var Match = require('./models/match.js');
+var Wager = require('./models/wager.js');
+var wager = require('./wager.js');
 
 module.exports = function(app, passport) {
 	app.get('/', function(req, res) {
@@ -26,7 +28,13 @@ module.exports = function(app, passport) {
 	}));
 
 	app.get('/profile', isLoggedIn, function(req, res) {
-		res.render('profile.jade', { user: req.user });
+		var query = Wager.find({'user._id': req.user._id}).sort({datetime: -1});
+
+		query.exec(function(err, docs) {
+			res.render('profile.jade', { user: req.user, wagers: docs, message: req.flash('wagerMessage') });
+		});
+
+		//res.render('profile.jade', { user: req.user, message: req.flash('wagerMessage') });
 	});
 
 	app.get('/logout', function(req, res) {
@@ -35,10 +43,19 @@ module.exports = function(app, passport) {
 	});
 
 	app.get('/matches', function(req, res) {
-		Match.find({}, function(err, docs) {
+		var query = Match.find({datetime: {$gt: new Date()}}).sort({datetime: 1});
+
+		query.exec(function(err, docs) {
 			res.render('matches.jade', {user: req.user, matches: docs });
 		});
+
+		//Match.find({}, function(err, docs) {
+			//res.render('matches.jade', {user: req.user, matches: docs });
+		//});
 	});
+
+	app.post('/wager', wager.wager);
+
 };
 
 

@@ -1,59 +1,70 @@
-doctype html
+extends layout1
 
-html
-	head
-		link(href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css", rel="stylesheet")
-		link(href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css", rel="stylesheet")
-		style body { padding-top: 80px; word-wrap: break-word }
+block content
+	div(class = "page-header text-center")
+		h1
+			span(class = "fa fa-anchor")
+			| &nbsp; User Page
 
-		title Super World Cup
+		a(href = "/logout" class = "btn btn-default btn-sm") Logout
 
-	body
-		div(class = "container")
-			div(class = "page-header text-center")
-				h1
-					span(class = "fa fa-anchor")
-					| &nbsp; User Page
+	if message.length > 0
+		div(class = "alert alert-danger")
+			| #{message}
 
-				a(href = "/logout" class = "btn btn-default btn-sm") Logout
+	div(class = "row")
+		div(class = "col-sm-6")
+			div(class = "well")
+				h3(class = "text-info")
+					span(class = "fa fa-user")
+					| &nbsp; #{user.user}
 
+				p
+					hr
+					strong name
+					| : #{user.name}
+					hr
+					strong email
+					| : #{user.email}
+					hr
+					strong points
+					| : #{user.points}
+					hr
+					a(href = "/profile/update" class = "btn btn-default btn-sm") Update
 
-			div(class = "row")
-				div(class = "col-sm-6")
-					div(class = "well")
-						h3(class = "text-info")
-							span(class = "fa fa-user")
-							| &nbsp; #{user.user}
+		div(class = "col-sm-6")
+			div(class = "well")
+				h3(class = "text-info")
+					span(class = "fa fa-user")
+					| &nbsp; Wagers
 
-						p
-							hr
-							strong email
-							| : #{user.email}
-							hr
-							strong points
-							| : #{user.points}
-							hr
-							a(href = "/profile/update" class = "btn btn-default btn-sm") Update
+				p
+					hr
+					strong Needs improvement
+					hr
+					each w, i in wagers
+						strong date
+						| : #{w.match.datetime}
+						br
+						strong match
+						| : #{w.match.team_1} vs. #{w.match.team_2}
+						br
+						strong team
+						| : #{w.team}
+						br
+						strong wager
+						| : #{w.wager}
+						br
+						strong to win
+						| : #{w.to_win}
+						br
+						strong result
+						| : #{w.points}
+						br
+						hr
+					a(href = "/matches" class = "btn btn-default btn-sm") Update
 
-				div(class = "col-sm-6")
-					div(class = "well")
-						h3(class = "text-info")
-							span(class = "fa fa-user")
-							| &nbsp; Wagers
-
-						p
-							hr
-							strong Match 1
-							br
-							| Info
-							hr
-							strong Match 2
-							br
-							| Info
-							hr
-							a(href = "/matches" class = "btn btn-default btn-sm") Update
-
-			hr
+	hr
 
 
 
