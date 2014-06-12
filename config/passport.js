@@ -28,6 +28,7 @@ module.exports = function(passport) {
 					return done(null, false, req.flash('signupMessage', 'That user is already taken.'));
 				} else {
 					var newUser = new User();
+					newUser.datetime = new Date();
 					newUser.user = user;
 					newUser.password = newUser.generateHash(password)
 					newUser.points = 1000;

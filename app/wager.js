@@ -22,6 +22,22 @@ exports.wager = function (req, res) {
 		var query = Match.findOne({_id: req.body.match}).sort({datetime: -1});
 
 		query.exec(function(err, match) {
+			/*// LOOK FOR DUPLICATE
+			Wager.find({'user._id': req.user._id, 'match._id': match._id}).forEach(function(wager) {
+				if (wager.team === req.body.team_1) {
+					wager_1 += wager.wager;
+				}
+
+				if (wager.team === req.body.team_2) {
+					wager_2 += wager.wager;
+				}
+
+				if (wager.team === req.body.draw) {
+					wager_3 += wager.wager;
+				}
+			});*/
+
+			// PROCESS WAGER
 			if (wager_1 > 0) {
 				var newWager = new Wager();
 				newWager.datetime = new Date();
@@ -107,5 +123,18 @@ exports.wager = function (req, res) {
 }
 
 
+exports.delete = function(req, res) {
+	Wager.findById(req.body.id, function(err, wager) {
+		User.findById(req.user._id, function(err, user) {
+				user.points += wager.wager;
+				user.save();
+		});
+
+		wager.remove(function(err, wager) {});
+	});
+		
+	req.flash('wagerMessage', 'Wager deleted.');
+	res.redirect('/profile');
+}
 
 

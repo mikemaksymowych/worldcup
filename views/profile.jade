@@ -17,7 +17,8 @@ block content
 			div(class = "well")
 				h3(class = "text-info")
 					span(class = "fa fa-user")
-					| &nbsp; #{user.user}
+					| &nbsp; #{user.user} &nbsp;
+					a(href = "/profile/update" class = "btn btn-default btn-sm") Update
 
 				p
 					hr
@@ -29,18 +30,15 @@ block content
 					hr
 					strong points
 					| : #{user.points}
-					hr
-					a(href = "/profile/update" class = "btn btn-default btn-sm") Update
 
 		div(class = "col-sm-6")
 			div(class = "well")
 				h3(class = "text-info")
 					span(class = "fa fa-user")
-					| &nbsp; Wagers
+					| &nbsp; Wagers &nbsp;
+					a(href = "/matches" class = "btn btn-default btn-sm") Update
 
 				p
-					hr
-					strong Needs improvement
 					hr
 					each w, i in wagers
 						strong date
@@ -61,8 +59,10 @@ block content
 						strong result
 						| : #{w.points}
 						br
-						hr
-					a(href = "/matches" class = "btn btn-default btn-sm") Update
+						br
+						form(action = "/wager/delete", method = "post")
+							input(type = "text", name = "id", hidden = "true", value = "#{w._id}")
+							button(type = "submit", class = "btn btn-danger btn-xs") Delete
 
 	hr
 

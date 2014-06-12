@@ -55,6 +55,7 @@ module.exports = function(app, passport) {
 	});
 
 	app.post('/wager', wager.wager);
+	app.post('/wager/delete', wager.delete);
 
 };
 
