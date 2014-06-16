@@ -1,3 +1,123 @@
 For a good time 127.0.0.1:12345
 For a good time 127.0.0.1:12345
 For a good time 127.0.0.1:12345
+For a good time 127.0.0.1:12345
+
+events.js:72
+        throw er; // Unhandled 'error' event
+              ^
+Error: listen EADDRINUSE
+    at errnoException (net.js:904:11)
+    at Server._listen2 (net.js:1042:14)
+    at listen (net.js:1064:10)
+    at Server.listen (net.js:1138:5)
+    at Function.app.listen (/home/mike/worldcup/node_modules/express/lib/application.js:548:24)
+    at Object.<anonymous> (/home/mike/worldcup/server.js:37:5)
+    at Module._compile (module.js:456:26)
+    at Object.Module._extensions..js (module.js:474:10)
+    at Module.load (module.js:356:32)
+    at Function.Module._load (module.js:312:12)
+For a good time 127.0.0.1:12345
+For a good time 127.0.0.1:12345
+SyntaxError: /home/mike/worldcup/views/profile.jade:63
+    61| 						br
+    62| 						br
+  > 63| 						if #{w.match.datetime} < #{datetime}
+    64| 							| :o
+    65| 						form(action = "/wager/delete", method = "post")
+    66| 							input(type = "text", name = "id", hidden = "true", value = "#{w._id}")
+
+Unexpected token ILLEGAL
+    at Function (<anonymous>)
+    at assertExpression (/home/mike/worldcup/node_modules/jade/lib/lexer.js:30:3)
+    at Object.Lexer.conditional (/home/mike/worldcup/node_modules/jade/lib/lexer.js:495:11)
+    at Object.Lexer.next (/home/mike/worldcup/node_modules/jade/lib/lexer.js:859:15)
+    at Object.Lexer.lookahead (/home/mike/worldcup/node_modules/jade/lib/lexer.js:113:46)
+    at Parser.lookahead (/home/mike/worldcup/node_modules/jade/lib/parser.js:100:23)
+    at Parser.peek (/home/mike/worldcup/node_modules/jade/lib/parser.js:77:17)
+    at Parser.tag (/home/mike/worldcup/node_modules/jade/lib/parser.js:791:30)
+    at Parser.parseTag (/home/mike/worldcup/node_modules/jade/lib/parser.js:719:17)
+    at Parser.parseExpr (/home/mike/worldcup/node_modules/jade/lib/parser.js:188:21)
+SyntaxError: /home/mike/worldcup/views/profile.jade:63
+    61| 						br
+    62| 						br
+  > 63| 						if #{w.match.datetime} < #{datetime}
+    64| 							| #{datetime}
+    65| 						form(action = "/wager/delete", method = "post")
+    66| 							input(type = "text", name = "id", hidden = "true", value = "#{w._id}")
+
+Unexpected token ILLEGAL
+    at Function (<anonymous>)
+    at assertExpression (/home/mike/worldcup/node_modules/jade/lib/lexer.js:30:3)
+    at Object.Lexer.conditional (/home/mike/worldcup/node_modules/jade/lib/lexer.js:495:11)
+    at Object.Lexer.next (/home/mike/worldcup/node_modules/jade/lib/lexer.js:859:15)
+    at Object.Lexer.lookahead (/home/mike/worldcup/node_modules/jade/lib/lexer.js:113:46)
+    at Parser.lookahead (/home/mike/worldcup/node_modules/jade/lib/parser.js:100:23)
+    at Parser.peek (/home/mike/worldcup/node_modules/jade/lib/parser.js:77:17)
+    at Parser.tag (/home/mike/worldcup/node_modules/jade/lib/parser.js:791:30)
+    at Parser.parseTag (/home/mike/worldcup/node_modules/jade/lib/parser.js:719:17)
+    at Parser.parseExpr (/home/mike/worldcup/node_modules/jade/lib/parser.js:188:21)
+    at Parser.block (/home/mike/worldcup/node_modules/jade/lib/parser.js:689:25)
+For a good time 127.0.0.1:12345
+For a good time 127.0.0.1:12345
+For a good time 127.0.0.1:12345
+1000
+1000
+1000
+For a good time 127.0.0.1:12345
+1300
+1200
+For a good time 127.0.0.1:12345
+1000
+900
+1000
+900
+1000
+900
+1000
+800
+1475
+1275
+900
+700
+700
+300
+Error: /home/mike/worldcup/views/layout2.jade:12
+    10| 			span(class = "navbar-brand") Super World Cup
+    11| 
+  > 12| 		div(class = "navbar-collapse collapse")a
+    13| 			ul(class = "nav navbar-nav")
+    14| 				li
+    15| 					a(href = "#") One
+
+Unexpected token `tag` expected `text`, `code`, `:`, `newline` or `eos`
+    at Parser.tag (/home/mike/worldcup/node_modules/jade/lib/parser.js:787:15)
+    at Parser.parseTag (/home/mike/worldcup/node_modules/jade/lib/parser.js:719:17)
+    at Parser.parseExpr (/home/mike/worldcup/node_modules/jade/lib/parser.js:188:21)
+    at Parser.block (/home/mike/worldcup/node_modules/jade/lib/parser.js:689:25)
+    at Parser.tag (/home/mike/worldcup/node_modules/jade/lib/parser.js:800:26)
+    at Parser.parseTag (/home/mike/worldcup/node_modules/jade/lib/parser.js:719:17)
+    at Parser.parseExpr (/home/mike/worldcup/node_modules/jade/lib/parser.js:188:21)
+    at Parser.block (/home/mike/worldcup/node_modules/jade/lib/parser.js:689:25)
+    at Parser.tag (/home/mike/worldcup/node_modules/jade/lib/parser.js:800:26)
+    at Parser.parseTag (/home/mike/worldcup/node_modules/jade/lib/parser.js:719:17)
+For a good time 127.0.0.1:12345
+TypeError: /home/mike/worldcup/views/matches.jade:12
+    10| 			| &nbsp; Matches
+    11| 		br
+  > 12| 		| You have #{user.points} points
+    13| 		hr
+    14| 
+    15| 		each m, i in matches
+
+Cannot read property 'points' of undefined
+    at eval (eval at <anonymous> (/home/mike/worldcup/node_modules/jade/lib/jade.js:172:8), <anonymous>:189:56)
+    at eval (eval at <anonymous> (/home/mike/worldcup/node_modules/jade/lib/jade.js:172:8), <anonymous>:424:21)
+    at res (/home/mike/worldcup/node_modules/jade/lib/jade.js:173:38)
+    at Object.exports.render (/home/mike/worldcup/node_modules/jade/lib/jade.js:269:10)
+    at Object.exports.renderFile (/home/mike/worldcup/node_modules/jade/lib/jade.js:305:18)
+    at View.exports.renderFile [as engine] (/home/mike/worldcup/node_modules/jade/lib/jade.js:290:21)
+    at View.render (/home/mike/worldcup/node_modules/express/lib/view.js:76:8)
+    at Function.app.render (/home/mike/worldcup/node_modules/express/lib/application.js:519:10)
+    at ServerResponse.res.render (/home/mike/worldcup/node_modules/express/lib/response.js:782:7)
+    at Promise.<anonymous> (/home/mike/worldcup/app/routes.js:59:8)

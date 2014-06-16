@@ -22,22 +22,6 @@ exports.wager = function (req, res) {
 		var query = Match.findOne({_id: req.body.match}).sort({datetime: -1});
 
 		query.exec(function(err, match) {
-			/*// LOOK FOR DUPLICATE
-			Wager.find({'user._id': req.user._id, 'match._id': match._id}).forEach(function(wager) {
-				if (wager.team === req.body.team_1) {
-					wager_1 += wager.wager;
-				}
-
-				if (wager.team === req.body.team_2) {
-					wager_2 += wager.wager;
-				}
-
-				if (wager.team === req.body.draw) {
-					wager_3 += wager.wager;
-				}
-			});*/
-
-			// PROCESS WAGER
 			if (wager_1 > 0) {
 				var newWager = new Wager();
 				newWager.datetime = new Date();
@@ -56,11 +40,6 @@ exports.wager = function (req, res) {
 					if (err) {
 						throw err;
 					}
-				});
-
-				User.findOne({_id: req.user._id}, function(err, user) {
-					user.points -= wager_1;
-					user.save();
 				});
 			}
 
@@ -83,11 +62,6 @@ exports.wager = function (req, res) {
 						throw err;
 					}
 				});
-
-				User.findOne({_id: req.user._id}, function(err, user) {
-					user.points -= wager_2;
-					user.save();
-				});
 			}
 
 			if (wager_3 > 0) {
@@ -109,15 +83,19 @@ exports.wager = function (req, res) {
 						throw err;
 					}
 				});
-
-				User.findOne({_id: req.user._id}, function(err, user) {
-					user.points -= wager_3;
-					user.save();
-				});
 			}
 
-			req.flash('wagerMessage', 'Your wagers were logged successfully.');
-			res.redirect('/profile');
+			User.findOne({_id: req.user._id}, function(err, user) {
+				console.log(user.points);
+				user.points -= wager_1;
+				user.points -= wager_2;
+				user.points -= wager_3;
+				console.log(user.points);
+				user.save();
+
+				req.flash('wagerMessage', 'Your wagers were logged successfully.');
+				res.redirect('/profile');
+			});
 		});
 	}
 }
@@ -125,16 +103,21 @@ exports.wager = function (req, res) {
 
 exports.delete = function(req, res) {
 	Wager.findById(req.body.id, function(err, wager) {
-		User.findById(req.user._id, function(err, user) {
-				user.points += wager.wager;
-				user.save();
-		});
+		if (wager.match.datetime < new Date()) {
+			req.flash('wagerMessage', 'no no no no jerkface.');
+			res.redirect('/profile');
+		} else {
+			User.findById(req.user._id, function(err, user) {
+					user.points += wager.wager;
+					user.save();
 
-		wager.remove(function(err, wager) {});
+				wager.remove(function(err, wager) {
+					req.flash('wagerMessage', 'Wager deleted.');
+					res.redirect('/profile');
+				});
+			});
+		}
 	});
-		
-	req.flash('wagerMessage', 'Wager deleted.');
-	res.redirect('/profile');
 }
 
 

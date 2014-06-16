@@ -1,0 +1,22 @@
+extends layout1
+
+block header
+	include layout2
+
+block content
+	div(class = "page-header text-center")
+		h1
+			span(class = "fa fa-anchor")
+			| &nbsp; Leaderboard
+
+		each t, i in teams 
+			hr
+			strong name
+			| : #{t.user} (#{t.name})
+			br
+			strong points
+			| : #{t.points}
+
+
+
+

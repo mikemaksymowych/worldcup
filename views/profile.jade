@@ -1,9 +1,12 @@
 extends layout1
 
+block header
+	include layout2
+
 block content
 	div(class = "page-header text-center")
 		h1
-			span(class = "fa fa-anchor")
+			span(class = "fa fa-user")
 			| &nbsp; User Page
 
 		a(href = "/logout" class = "btn btn-default btn-sm") Logout
@@ -58,11 +61,13 @@ block content
 						br
 						strong result
 						| : #{w.points}
-						br
-						br
-						form(action = "/wager/delete", method = "post")
-							input(type = "text", name = "id", hidden = "true", value = "#{w._id}")
-							button(type = "submit", class = "btn btn-danger btn-xs") Delete
+						if now[i]
+							br
+							br
+							form(action = "/wager/delete", method = "post")
+								input(type = "text", name = "id", hidden = "true", value = "#{w._id}")
+								button(type = "submit", class = "btn btn-danger btn-xs") Delete
+						hr
 
 	hr
 
