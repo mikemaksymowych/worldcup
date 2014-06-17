@@ -1,4 +1,4 @@
-var User= require('./models/user.js');
+var User = require('./models/user.js');
 var Match = require('./models/match.js');
 var Wager = require('./models/wager.js');
 var wager = require('./wager.js');
@@ -28,10 +28,6 @@ module.exports = function(app, passport) {
 		failureFlash: true,
 	}));
 
-	app.get('/profile/update', isLoggedIn, function(req, res) {
-		res.render('info.jade');
-	});
-
 	app.get('/profile', isLoggedIn, function(req, res) {
 		var query = Wager.find({'user._id': req.user._id}).sort({datetime: -1});
 
@@ -47,9 +43,16 @@ module.exports = function(app, passport) {
 			}
 			res.render('profile.jade', { user: req.user, wagers: docs, now: canDelete, message: req.flash('wagerMessage') });
 		});
-
-		//res.render('profile.jade', { user: req.user, message: req.flash('wagerMessage') });
 	});
+
+	app.get('/profile/update', isLoggedIn, function(req, res) {
+		res.render('info.jade');
+	});
+
+	app.post('/update', function(req, res) {
+		res.redirect('/profile', {message: req.flash({'updateMessage': 'profile updated'})});
+	});
+
 	app.get('/logout', function(req, res) {
 		req.logout();
 		res.redirect('/');
@@ -61,10 +64,6 @@ module.exports = function(app, passport) {
 		query.exec(function(err, docs) {
 			res.render('matches.jade', {user: req.user, matches: docs });
 		});
-
-		//Match.find({}, function(err, docs) {
-			//res.render('matches.jade', {user: req.user, matches: docs });
-		//});
 	});
 
 	app.post('/wager', wager.wager);

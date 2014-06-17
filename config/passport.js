@@ -32,6 +32,8 @@ module.exports = function(passport) {
 					newUser.user = user;
 					newUser.password = newUser.generateHash(password)
 					newUser.points = 1000;
+					newUser.name = '';
+					newUser.email = '';
 
 					newUser.save(function(err) {
 						if (err) {

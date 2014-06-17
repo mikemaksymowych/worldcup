@@ -9,14 +9,14 @@ block content
 			span(class = "fa fa-sign-in")
 			| &nbsp; Update Info
 
-		| (only fill in what you want to change)
+		| (only name and email)
 		br
 		br
 
 		form(action = "/update", method = "post")
 			div(class = "form-group")
 				label User
-				input(type = "text", class = "form-control", name = "user")
+				input(type = "text", class = "form-control", name = "newuser")
 			div(class = "form-group")
 				label Name
 				input(type = "text", class = "form-control", name = "name")
